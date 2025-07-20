@@ -1,4 +1,4 @@
-# shelly-bulk-update
+# sbu - shelly-bulk-update
 
 Automatically updates the firmware of all your [Shelly](https://shelly.cloud/) devices at once.
 
@@ -38,11 +38,13 @@ If you only want to update all Shelly devices of a specific device generation, u
 [generation 2](https://shelly-api-docs.shelly.cloud/gen2/). For example, this can be used to update all second
 generation devices to the latest beta version but keep first generation devices on the stable channel.
 
+## Configuration
+
+Create a file in your home folder called `~/.sbu.yml`.
+
 ### Authentication
 
 You can provide authentication via `--password`
-
-#### Global credentials
 
 Create a file in your home folder called `~/.sbu.yml` and put this into our file
 
