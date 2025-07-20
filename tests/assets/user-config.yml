@@ -1,0 +1,4 @@
+default:
+  credentials:
+    username: admin # this should be admin - always. See https://shelly-api-docs.shelly.cloud/gen2/General/Authentication/#setting-authentication-credentials-for-a-device
+    password: verysecret

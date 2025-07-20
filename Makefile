@@ -1,22 +1,19 @@
-.PHONY: all
+init:
+	go mod tidy
+	go mod verify
 
-all: bin/shelly-bulk-update-Darwin-x86_64 bin/shelly-bulk-update-Darwin-arm64 bin/shelly-bulk-update-Linux-x86_64 bin/shelly-bulk-update-Linux-armv7 bin/shelly-bulk-update-Linux-arm64 bin/shelly-bulk-update-Windows-x86_64.exe
+update:
+	go get -u
+	go mod tidy
 
-bin/shelly-bulk-update-Darwin-x86_64: main.go
-	GOOS=darwin GOARCH=amd64 go build -o $@ .
+tests:
+	go test ./...
 
-bin/shelly-bulk-update-Darwin-arm64: main.go
-	GOOS=darwin GOARCH=arm64 go build -o $@ .
+build:
+	env CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -tags netgo -o dist/sbu-macos-amd64 main.go
+	env CGO_ENABLED=0 GOOS=darwin GOARCH=arm64 go build -tags netgo -o dist/sbu-macos-arm64 main.go
+	env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -tags netgo -o dist/sbu-linux-amd64 main.go
+	env CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -tags netgo -o dist/sbu-windows-amd64 main.go
 
-bin/shelly-bulk-update-Linux-x86_64: main.go
-	GOOS=linux GOARCH=amd64 go build -o $@ .
-
-bin/shelly-bulk-update-Linux-armv7: main.go
-	GOOS=linux GOARCH=arm GOARM=7 go build -o $@ .
-
-bin/shelly-bulk-update-Linux-arm64: main.go
-	GOOS=linux GOARCH=arm64 go build -o $@ .
-
-bin/shelly-bulk-update-Windows-x86_64.exe: main.go
-	GOOS=windows GOARCH=amd64 go build -o $@ .
-
+build-dev:
+	go build -o dist/sbu main.go
