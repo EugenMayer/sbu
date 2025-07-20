@@ -20,6 +20,11 @@ builds:
       - linux
       - windows
       - darwin
+    goarch:
+      - amd64
+      - arm64
+    tags:
+      - netgo
 
 archives:
   - formats: [tar.gz]
@@ -35,6 +40,7 @@ archives:
     format_overrides:
       - goos: windows
         formats: [zip]
+
 
 changelog:
   sort: asc
