@@ -19,7 +19,7 @@ func main() {
 	cli.ParseArgs()
 
 	if *cli.ShowVersion {
-		fmt.Printf("mota %s (%s %s)\n", version, commit, date)
+		fmt.Printf("sbu %s (%s %s)\n", version, commit, date)
 		os.Exit(0)
 	}
 
@@ -34,7 +34,7 @@ func main() {
 		cli.Password = &userConfig.GlobalConfig.DefaultCredentials.Password
 	}
 
-	if cli.Hosts != nil {
+	if cli.Hosts != nil && len(*cli.Hosts) > 0 {
 		update.SpecificHosts(*cli.Hosts)
 	} else {
 		update.AutoDiscoverUsingAndUpdate()
