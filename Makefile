@@ -1,5 +1,15 @@
 .PHONY: all
 
+
+init:
+	go mod tidy
+	go mod verify
+
+update:
+	go get -u
+	go mod tidy
+
+
 all: bin/shelly-bulk-update-Darwin-x86_64 bin/shelly-bulk-update-Darwin-arm64 bin/shelly-bulk-update-Linux-x86_64 bin/shelly-bulk-update-Linux-armv7 bin/shelly-bulk-update-Linux-arm64 bin/shelly-bulk-update-Windows-x86_64.exe
 
 bin/shelly-bulk-update-Darwin-x86_64: main.go
@@ -20,3 +30,5 @@ bin/shelly-bulk-update-Linux-arm64: main.go
 bin/shelly-bulk-update-Windows-x86_64.exe: main.go
 	GOOS=windows GOARCH=amd64 go build -o $@ .
 
+tests:
+	go test

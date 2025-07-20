@@ -290,6 +290,13 @@ func main() {
 
 	if password != "" {
 		fmt.Printf("Using basic authentication: %s:*******\n", username)
+	} else if UserConfigExistsInHome() {
+		config, err := LoadUserConfigFromHome()
+		if err != nil {
+			log.Fatalln("Failed loading user config", err.Error())
+		}
+		username = config.GlobalConfig.DefaultCredentials.Username
+		password = config.GlobalConfig.DefaultCredentials.Password
 	}
 
 	if updateStage != "stable" && updateStage != "beta" {

@@ -37,3 +37,18 @@ If you only want to update all Shelly devices of a specific device generation, u
 [generation 1](https://shelly-api-docs.shelly.cloud/gen1/#shelly-family-overview) or `-gen=2` for
 [generation 2](https://shelly-api-docs.shelly.cloud/gen2/). For example, this can be used to update all second
 generation devices to the latest beta version but keep first generation devices on the stable track.
+
+### Authentication
+
+You can either provide global credentials or device based credentials. Device based credentials always take precedence.
+
+#### Global credentials
+
+Create a file in your home folder called `~/.shlly.yml` and put this into our file
+
+```yaml
+global:
+  credentials:
+    username: admin # this should be admin - always. See https://shelly-api-docs.shelly.cloud/gen2/General/Authentication/#setting-authentication-credentials-for-a-device
+    password: verysecret
+```
