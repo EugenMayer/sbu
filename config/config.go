@@ -1,4 +1,4 @@
-package main
+package config
 
 import (
 	"errors"
@@ -8,7 +8,7 @@ import (
 )
 
 type UserConfig struct {
-	GlobalConfig GlobalConfig `yaml:"global,omitempty"`
+	GlobalConfig GlobalConfig `yaml:"default,omitempty"`
 }
 
 type GlobalConfig struct {
@@ -26,7 +26,7 @@ func UserConfigPath() (string, error) {
 		return "", err
 	}
 
-	return fmt.Sprintf("%s/.shelly.yml", userHome), nil
+	return fmt.Sprintf("%s/.sbu.yml", userHome), nil
 }
 
 func UserConfigExistsInHome() bool {

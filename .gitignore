@@ -12,6 +12,5 @@
 *.out
 
 # Built binaries
-bin/
-
+dist/
 .idea

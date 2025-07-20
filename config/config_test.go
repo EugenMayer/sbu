@@ -1,4 +1,4 @@
-package main
+package config
 
 import (
 	assert "github.com/stretchr/testify/assert"
@@ -7,7 +7,7 @@ import (
 )
 
 func TestLoadUserConfig(t *testing.T) {
-	config, err := LoadUserConfig("tests/assets/user-config.yml")
+	config, err := LoadUserConfig("../tests/assets/user-config.yml")
 	require.Nil(t, err)
 	require.NotNil(t, config)
 
